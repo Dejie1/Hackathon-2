@@ -1,4 +1,4 @@
-# CPC113 Hackathon 2
+# CPT113 Hackathon 2
 > **MEMBERS**
 
 **1.** `ANG DE JIE`
