@@ -399,7 +399,8 @@ void Stage3::endlevel()
     cout << "\"Cough, cough..\" You heard someone coughing behind the walls.. " << endl;
     cout << " \"Hey Granny ! What are you doing here? \" You walks towards her";
     cout << " and you saw her carrying a bag of items..." << endl;
-
+    system("pause");
+    system("cls");
     Shop shopObject(player);
     Shop *shop = &shopObject;
     shop->displayMenu();

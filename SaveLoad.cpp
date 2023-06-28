@@ -51,7 +51,8 @@ void SaveLoad ::show()
         infile >> obj >> obj;
         cout << "Level : " << obj << endl;
         cout << " Do you want to load this progress? " << endl;
-        cout << "Press 'y' or 'yes' to proceed. " << endl;
+        cout << "Press 'y' / 'yes' to proceed. " << endl;
+        cout << "Or press 'n' / 'No' to back to Main Menu" << endl;
     }
     else
     {

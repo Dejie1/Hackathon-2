@@ -91,6 +91,14 @@ void Menu::ShowMenu()
                 stage6.loadLevel();
             }
         }
+        else if (choose == "n" || choose == "no" || choose == "No" || choose == "NO")
+        {
+            ShowMenu();
+        }
+        else
+        {
+            cout << "Sorry, I dont recognize " << choose;
+        }
     }
     if (MenuControl == "3")
     {

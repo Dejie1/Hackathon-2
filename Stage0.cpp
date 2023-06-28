@@ -12,6 +12,7 @@ Stage0::~Stage0() {}
 
 void Stage0::loadLevel()
 {
+    player->setHP(10000);
     setPlayer();
     player->initialiseInventory();
     printStory();
