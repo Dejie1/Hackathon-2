@@ -1,0 +1,124 @@
+#include <iostream>
+#include <string>
+#include <Windows.h>
+#include "Menu.h"
+#include "Stage0.h"
+#include "Stage1.h"
+#include <stdlib.h>
+#include "Stage2.h"
+#include "Stage3.h"
+#include "Stage4.h"
+#include "Stage5.h"
+#include "Stage6.h"
+using namespace std;
+
+Menu::Menu() {}
+
+Menu::~Menu() {}
+
+void Menu::ShowMenu()
+{
+    system("cls");
+    cout << " #####   #######  #     #      ######   #     #  #     #   #####   #######  #######  #     #" << endl;
+    cout << "#     #  #         #   #       #     #  #     #  ##    #  #     #  #        #     #  ##    #" << endl;
+    cout << "#        #          # #        #     #  #     #  # #   #  #        #        #     #  # #   # " << endl;
+    cout << " #####   #####       #         #     #  #     #  #  #  #  #  ####  #####    #     #  #  #  #" << endl;
+    cout << "      #  #          # #        #     #  #     #  #   # #  #     #  #        #     #  #   # #" << endl;
+    cout << "#     #  #         #   #       #     #  #     #  #    ##  #     #  #        #     #  #    ##" << endl;
+    cout << " #####   #######  #     #      ######    #####   #     #   #####   #######  #######  #     # " << endl;
+    cout << endl;
+    cout << "Choose: " << endl;
+    cout << "1. Start the game. " << endl;
+    cout << "2. Load Game. " << endl;
+    cout << "3. Exit. " << endl;
+    cout << "> ";
+    cin >> MenuControl;
+
+    while (MenuControl != "1" && MenuControl != "2" && MenuControl != "3")
+    {
+        cout << "Invalid command. Please try again.\n";
+        cout << "> ";
+        cin >> MenuControl;
+    }
+
+    if (MenuControl == "1")
+    {
+        // Start the story + level1
+        stage0->loadLevel();
+    }
+    if (MenuControl == "2")
+    {
+        // Load the game
+
+        int stage = 0;
+
+        SavePtr->loadfile(stage, plyPtr);
+        cout << "Hello ";
+        if (stage == 1)
+        {
+            Stage1 stage1(plyPtr, SavePtr);
+            cout << "Heading to stage 1." << endl;
+            stage1.loadLevel();
+        }
+        else if (stage == 2)
+        {
+            Stage2 stage2(plyPtr, SavePtr);
+            cout << "Heading to stage 2." << endl;
+            stage2.loadLevel();
+        }
+        else if (stage == 3)
+        {
+            Stage3 stage3(plyPtr, SavePtr);
+            cout << "Heading to stage 3." << endl;
+            stage3.loadLevel();
+        }
+        else if (stage == 4)
+        {
+            Stage4 stage4(plyPtr, SavePtr);
+            cout << "Heading to stage 4." << endl;
+            stage4.loadLevel();
+        }
+        else if (stage == 5)
+        {
+            Stage5 stage5(plyPtr, SavePtr);
+            cout << "Heading to stage 5." << endl;
+
+            stage5.loadLevel();
+        }
+        else if (stage == 0)
+        {
+            cout << "There is no game saved in file." << endl;
+        }
+        else if (stage == 6)
+        {
+            Stage6 stage6(plyPtr, SavePtr);
+            stage6.loadLevel();
+        }
+        return;
+    }
+    if (MenuControl == "3")
+    {
+        exit(3);
+    }
+}
+
+void Menu::gameOver()
+{
+    cout << "#   #  ####### #     #    ######  ### ####### ######  " << endl;
+    cout << " # #   #     # #     #    #     #  #  #       #     # " << endl;
+    cout << "  #    #     # #     #    #     #  #  #####   #     # " << endl;
+    cout << "  #    #     # #     #    #     #  #  #       #     # " << endl;
+    cout << "  #    #     # #     #    #     #  #  #       #     # " << endl;
+    cout << "  #    #######  #####     ######  ### ####### ######  " << endl;
+}
+
+void Menu::congratMessage()
+{
+    cout << "                                                                 ###" << endl;
+    cout << "  ####    ####   #    #   ####   #####     ##   #####   ####     ### " << endl;
+    cout << " #    #  #    #  ##   #  #    #  #    #   #  #    #    #         ### " << endl;
+    cout << " #       #    #  # #  #  #       #    #  #    #   #     ####      #  " << endl;
+    cout << " #       #    #  #  # #  #  ###  #####   ######   #         #        " << endl;
+    cout << " #    #  #    #  #   ##  #    #  #   #   #    #   #    #    #    ### " << endl;
+    cout << "  ####    ####   #    #   ####   #    #  #    #   #     ####     ###  " << endl;
+}
