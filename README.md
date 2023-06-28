@@ -42,27 +42,35 @@ and unlock the `chests` in **Spire of Sins**, a captivating RPG that challenges 
 
 > GAME FEATURES
 1. Interactive Menu
+   
 2. Multiple Ending (Later you will know)
+   
 3. Multiple Events
   - Statue
   - Suddenly encounted with enemy
-5. Battle System
+    
+4. Battle System
   - Attack
   - Defend
   - Use potion
   - Dodge
   - Blocking Damage
+    
 5. Random Chest System
+
 6. Shop System
   - Buy item
   - Sell item
+    
 7. Save & Load
+
 8. Player Stats
   - HP
   - ATK
   - DEF
   - SPEED
-8. Inventory System
+    
+9. Inventory System
   - Weapon
   - Armor
   - Shoe
