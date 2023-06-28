@@ -89,6 +89,15 @@ When the `Stage 0` is finished, it will go to the next stage, `Stage1` and start
 
 We also implement OOP for `Player` class and `Creature` class. Our derived class is `Player` class and our base class is `Creature` class. The reason why we want to do this because we want the `Player` class inherits from `Creature` class to get the all the stats of the specific creature. For example the `slime`, so we are able to get the `HP`, `ATK`, `DEF`, `SPEED` of the `slime` to be used in our battle system.
 
+> HOW LINKED LIST PLAY A ROLE IN OUR GAME
+
+1.	The feature to save and load the game is achieved by Linked List. For instance, after each stage, the game is automatically saved. Behind the UI, it is a Stack structure managing this saving feature where it pushes each stage’s data into the structure.
+
+2.	The feature of the Shop. For instance, at stage 3 and stage 5, you will get the opportunity to buy items. Once we check whether the player can buy the desired item, we push the item data into the Linked List. This is to simplify the process of showing the purchased item, which is the ‘Show Purchased’ option when the player is in the store.  Besides, the player also can sell items. Behind the UI, this selling item feature is accomplished by deleting the node of the item purchased. This is vital so that the player can have options to buy other items that are more beneficial to the run. 
+
+3.	The feature of Inventory. The player’s inventory is essentially a Linked List that contains 3 nodes, Weapon, Armor, and Shoes. When the player acquires a new item, the values of the node, like the name, and the value, is updated. Showing inventory is also achieved by traversing the Linked List. This is vital because this Linked List allows player to have a working inventory. 
+
+
 > GAMEPLAY
 
 1. Choose your own `path`.
