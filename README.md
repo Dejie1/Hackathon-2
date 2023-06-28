@@ -23,6 +23,16 @@ We are from Group 40. This is our first game we ever made by using  `C++` progra
 
 **Spire of Sin** is an immersive and captivating role-playing game (RPG) that delves into a dark and morally world.
 
+> HOW TO RUN THE GAME
+
+There are **3 methods** to play the game:
+
+1. 
+Installed any `c++ compiler` and paste this `command` into the `command prompt`, we assume you use Visual Studio Code with `MSYS2` + 
+```c++
+g++ Creature.cpp Menu.cpp Player.cpp main.cpp Stage0.cpp Stage1.cpp Stage2.cpp Stage3.cpp Stage4.cpp Stage5.cpp Stage6.cpp Inventory.cpp SaveLoad.cpp Shop.cpp -o main.exe
+```
+
 > GAME DESCRIPTION
 
 You are an `exile` and wake up in a mysterious room with no memory, you don't know how you get here. Suddenly, you heard voices surroud you but you don't where are they from.
