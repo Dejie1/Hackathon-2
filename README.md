@@ -1,35 +1,36 @@
-# CPC113 Hackathon 2
+# CPT113 Hackathon 2
 > **MEMBERS**
 
-**1.** ANG DE JIE
+**1.** `ANG DE JIE`
 
-**No. Matric -** 164049
+**No. Matric -** `164049`
 
-**2.** ANSON KIU YI KAI
+**2.** `ANSON KIU YI KAI`
 
-**No. Matric -** 164554
+**No. Matric -** `164554`
 
-**3.** AXLER CHIN SHUN YUAN
+**3.** `AXLER CHIN SHUN YUAN`
 
-**No. Matric -** 162331
+**No. Matric -** `162331`
 
 > GROUP NUMBER
 
-Group 40
+**Group 40**
 
 > INTRODUCTION
 
-We are from Group 40. This is our first game we ever made by using  `C++` programming language. The game is called **Spire of Sin**.
-
-**Spire of Sin** is an immersive and captivating role-playing game (RPG) that delves into a dark and morally world.
+We are from **Group 40**. This is our first game we ever made by using  `C++` programming language. The game is called **Spire of Sin**. It is an immersive and captivating role-playing game (RPG) that delves into a dark and morally world.
 
 > HOW TO RUN THE GAME
 
-There are **3 methods** to play the game:
+- Here are the `.cpp` files that are necessary to run as a command:
+```txt
+Creature.cpp Menu.cpp Player.cpp main.cpp Stage0.cpp Stage1.cpp Stage2.cpp Stage3.cpp Stage4.cpp Stage5.cpp Stage6.cpp Inventory.cpp SaveLoad.cpp Shop.cpp
+```
 
-1. 
-Installed any `c++ compiler` and paste this `command` into the `command prompt`, we assume you use Visual Studio Code with `MSYS2` + 
-```c++
+- Installed any IDE which support `c++`, copy and paste this command into the command prompt. We take `Visual Studio Code` + `MSYS2` as example:
+```txt
+// Copy this comamand and paste it into the command prompt.
 g++ Creature.cpp Menu.cpp Player.cpp main.cpp Stage0.cpp Stage1.cpp Stage2.cpp Stage3.cpp Stage4.cpp Stage5.cpp Stage6.cpp Inventory.cpp SaveLoad.cpp Shop.cpp -o main.exe
 ```
 
@@ -39,13 +40,49 @@ You are an `exile` and wake up in a mysterious room with no memory, you don't kn
 You awaken to a voice beckoning you to wake up, and you tell yourself you have to **ESCAPE** from this haunted area. Discover the mysterious area, `battle` fearsome `monsters`, 
 and unlock the `chests` in **Spire of Sins**, a captivating RPG that challenges your morality and tests the limits of your resolve.
 
+> GAME FEATURES
+1. Interactive Menu
+   
+2. Multiple Ending (Later you will know)
+   
+3. Multiple Events
+  - Statue
+  - Suddenly encounted with enemy
+    
+4. Battle System
+  - Attack
+  - Defend
+  - Use potion
+  - Dodge
+  - Blocking Damage
+    
+5. Random Chest System
+
+6. Shop System
+  - Buy item
+  - Sell item
+    
+7. Save & Load
+
+8. Player Stats
+  - HP
+  - ATK
+  - DEF
+  - SPEED
+    
+9. Inventory System
+  - Weapon
+  - Armor
+  - Shoe
+  - Gold
+  - Potion
+
 > GAMEPLAY
 
-- Choose your `path`
+1. Choose your own `path`.
 
-While playing the game, the players are able to make their own decision in some scenarios. The choice they made will affect their future.
-
-Here is an example of the scenarios:
+- While playing the game, the players are able to make their own decision in some scenarios. The choice they made will affect their future.
+- Here is an example of the scenarios:
 ```c++
 You wakes up in a mysterious room with no memory of how you get here ...
 "Damn ... Its cold in here" You said as you slowly close your eyes once again ...
@@ -60,7 +97,7 @@ Choose:
 > _
 ```
 
-- Deal with `actions`
+2. Deal with `actions`.
   
 The players are able to deal with `actions` while exploring the mysterious area in the game. 
 
@@ -74,7 +111,7 @@ Type 'exit' to exit the game...
 > _
 ```
 
-- Fight with the `monsters`
+3. Fight with the `monsters`.
 
 The players will encounter with `monsters` for each stage. Every time you get into a new stage, the monsters will become stronger than ever.
 
@@ -96,7 +133,7 @@ Enter your action:
 > _
 ```
 
-- Unlock the `chests`
+4. Unlock the `chests`.
 
 After finishing the battle, the player will able to unlock the `chests`. There are total of 3 `chests` for each stage.
 
@@ -111,10 +148,11 @@ But ... Which one would you like to open ?
 > _
 ```
 
-- Stay your determination to continue moving forwards
+5. Stay your determination to continue moving forwards.
 
-We know that it is **not really easy** for the players (YOU) to beat the game. So, please stay yout **determination** :)
+We know that it is **not really easy** for the players (you) to beat the game. So, please stay your **determination** :)
 
+6. Escape the haunted area.
 `Congrats !`:
 ```c++
                                                                     ###
