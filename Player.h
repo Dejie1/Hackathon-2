@@ -3,9 +3,7 @@
 #include "Inventory.h"
 #include "Creature.h"
 #include <string>
-#include <cstdlib>
 #include <iomanip>
-#include <ctime>
 #include <iostream>
 using namespace std;
 
@@ -50,6 +48,10 @@ public:
     int getGold();
     void setGold(int);
     void showStats();
+    void buffWeapon(string, int);
+    void buffArmor(string, int);
+    void buffShoe(string, int);
+    void nerfEquipment(string);
 };
 
 #endif

@@ -12,7 +12,6 @@ class Stage5
 private:
     Player playerObject;
     Player *player = &playerObject;
-    Shop shop;
     SaveLoad save;
     SaveLoad *savePtr = &save;
     struct MonsterStats

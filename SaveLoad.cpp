@@ -77,7 +77,7 @@ void SaveLoad ::savefile()
 {
     fstream outfile;
     outfile.open("SaveGame.txt", ios ::out);
-    if (outfile.is_open())
+    if (outfile)
     {
         outfile << "stage " << stackTop->stage;
         outfile << "\nlevel " << stackTop->player.getLvl();
@@ -111,74 +111,74 @@ void SaveLoad ::savefile()
     cout << "Game saved file succesfully, you can load the game progress at future." << endl;
 }
 
-void SaveLoad ::loadfile(int &stag, Player *ply)
+int SaveLoad ::loadfile(Player *ply)
 {
     fstream infile("SaveGame.txt", ios::in);
-    string object;
-    int value;
+    string object, equip = "";
+    int value, stage = 0;
     if (infile)
     {
         cout << "Reading file..." << endl;
         while (infile >> object)
         {
-            cout << object << " ";
-            infile >> value;
-            cout << value;
+            ply->initialiseInventory();
+
             if (object == "stage")
             {
-                stag = value;
+                infile >> value;
+                stage = value;
             }
             else if (object == "level")
             {
+                infile >> value;
                 ply->setLevel(value);
             }
             else if (object == "hp")
             {
+                infile >> value;
                 ply->setHP(value);
             }
             else if (object == "attack")
             {
+                infile >> value;
                 ply->setAtk(value);
             }
             else if (object == "defense")
             {
+                infile >> value;
                 ply->setDefense(value);
             }
             else if (object == "speed")
             {
+                infile >> value;
                 ply->setSpeed(value);
             }
             else if (object == "potion")
             {
+                infile >> value;
                 ply->setPotions(value);
             }
             else if (object == "weapon")
             {
-                if (value)
-                    ply->pickItem("weapon", to_string(value), ply->getAtk());
-                else
-                    ply->pickItem("weapon", "", ply->getAtk());
+                infile >> equip;
+                ply->pickItem("weapon", equip, ply->getAtk());
             }
             else if (object == "armor")
             {
-                if (value)
-                    ply->pickItem("armor", to_string(value), ply->getDefense());
-                else
-                    ply->pickItem("armor", "", ply->getDefense());
+                infile >> equip;
+                ply->pickItem("armor", equip, ply->getDefense());
             }
             else if (object == "shoe")
             {
-                if (value)
-                    ply->pickItem("shoe", to_string(value), ply->getSpeed());
-                else
-                    ply->pickItem("shoe", "", ply->getSpeed());
+                infile >> equip;
+                ply->pickItem("shoe", equip, ply->getSpeed());
             }
         }
-        cout << "Player: " << ply->getName();
-        cout << "Level: " << ply->getLvl();
     }
     else
     {
-        cout << "suck my cock" << endl;
+        cout << "SaveGame.txt not exist." << endl;
     }
+
+    return stage;
 }

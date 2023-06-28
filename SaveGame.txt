@@ -1,6 +1,6 @@
 stage 2
 level 1
-hp 28
+hp 26
 attack 5
 defense 3
 speed 0

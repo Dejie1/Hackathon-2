@@ -50,10 +50,7 @@ void Menu::ShowMenu()
     {
         // Load the game
 
-        int stage = 0;
-
-        SavePtr->loadfile(stage, plyPtr);
-        cout << "Hello ";
+        int stage = SavePtr->loadfile(plyPtr);
         if (stage == 1)
         {
             Stage1 stage1(plyPtr, SavePtr);

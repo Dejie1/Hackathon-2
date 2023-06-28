@@ -6,6 +6,7 @@
 #include "Inventory.h"
 #include "Stage5.h"
 #include "Stage6.h"
+#include "Shop.h"
 #include <iostream>
 using namespace std;
 
@@ -125,11 +126,11 @@ void Stage5::newItemFromChest()
     cout << "Current weapon - \"" << newWeapon << "\"" << endl;
     cout << "Current armour - \"" << newArmour << "\"" << endl;
     cout << "Current shoes - \"" << newShoes << "\"" << endl;
-    cout << "-------------------------------------------------\n";
-    cout << "Your stats is UPDATED:" << endl;
+    cout << "\nYour stats is UPDATED:" << endl;
     cout << "ATK - " << newAtk << endl;
     cout << "DEF - " << newDef << endl;
-    cout << "SPEED - " << newSpeed;
+    cout << "SPEED - " << newSpeed << endl;
+    cout << "-------------------------------------------------";
     cout << "\n\nHere are all the chest items, see what you missed just now :)" << endl;
     cout << "1. Diamond Chest - " << itemPosition[0] << " (" << typePosition[0] << " - " << statsPosition[0] << ")" << endl;
     cout << "2. Diamond Chest - " << itemPosition[1] << " (" << typePosition[1] << " - " << statsPosition[1] << ")" << endl;
@@ -372,7 +373,10 @@ void Stage5::endlevel()
     cout << "\"Cough, cough..\" You heard someone coughing behind the walls.. " << endl;
     cout << " \"Hey Granny ! What are you doing here? \" You walks towards her";
     cout << " and you saw her carrying a bag of items..." << endl;
-    shop.displayMenu();
+
+    Shop shopObject(player);
+    Shop *shop = &shopObject;
+    shop->displayMenu();
     system("pause");
     system("cls");
     cout << "Congratulations you finished the fifth level of the dungeon! \n";

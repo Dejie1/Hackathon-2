@@ -47,29 +47,26 @@ void Inventory ::appendNode(string type, string name, int value) // use in const
 void Inventory ::showInventory() // traverse the Linked List and print all the itemName and its value
 {
     Node *nodePtr = head;
-    if (nodePtr)
+    while (nodePtr)
     {
-        while (nodePtr)
+        if (nodePtr->itemType == "weapon")
         {
-            if (nodePtr->itemType == "weapon")
-            {
-                cout << "Weapon: \"" << nodePtr->itemName << "\"" << endl;
-                cout << "Attack: " << nodePtr->itemValue << endl;
-                nodePtr = nodePtr->next;
-            }
-            else if (nodePtr->itemType == "armor")
-            {
-                cout << "Armor: \"" << nodePtr->itemName << "\"" << endl;
-                cout << "Defense: " << nodePtr->itemValue << endl;
-                nodePtr = nodePtr->next;
-            }
+            cout << "Weapon: \"" << nodePtr->itemName << "\"" << endl;
+            cout << "Attack: " << nodePtr->itemValue << endl;
+            nodePtr = nodePtr->next;
+        }
+        else if (nodePtr->itemType == "armor")
+        {
+            cout << "Armor: \"" << nodePtr->itemName << "\"" << endl;
+            cout << "Defense: " << nodePtr->itemValue << endl;
+            nodePtr = nodePtr->next;
+        }
 
-            else if (nodePtr->itemType == "shoe")
-            {
-                cout << "Shoe: \"" << nodePtr->itemName << "\"" << endl;
-                cout << "Speed: " << nodePtr->itemValue << endl;
-                nodePtr = nodePtr->next;
-            }
+        else if (nodePtr->itemType == "shoe")
+        {
+            cout << "Shoe: \"" << nodePtr->itemName << "\"" << endl;
+            cout << "Speed: " << nodePtr->itemValue << endl;
+            nodePtr = nodePtr->next;
         }
     }
 }

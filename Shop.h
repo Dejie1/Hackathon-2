@@ -11,6 +11,7 @@ private:
     Player *player = &playerObject;
     struct ListNode
     {
+        string ItemType;
         string ItemName;
         string Itemprice;
         ListNode *nextNode;
@@ -18,10 +19,12 @@ private:
     ListNode *head;
 
 public:
-    void appendList(string, int);
+    Shop(Player *);
+    void appendList(string, string, string);
     void displayMenu();
     void displayPurchased();
-    void CheckAffordable();
+    void clearOutput();
+    void sellItem(string);
 };
 
 #endif

@@ -26,7 +26,7 @@ public:
     SaveLoad();
     ~SaveLoad();
     void savefile();
-    void loadfile(int &, Player *);
+    int loadfile(Player *);
     void push(int, Player *);
     void pop();
     void show();

@@ -127,11 +127,11 @@ void Stage1::newItemFromChest()
     cout << "Current weapon - \"" << newWeapon << "\"" << endl;
     cout << "Current armour - \"" << newArmour << "\"" << endl;
     cout << "Current shoes - \"" << newShoes << "\"" << endl;
-    cout << "-------------------------------------------------\n";
-    cout << "Your stats is UPDATED:" << endl;
+    cout << "\nYour stats is UPDATED:" << endl;
     cout << "ATK - " << newAtk << endl;
     cout << "DEF - " << newDef << endl;
-    cout << "SPEED - " << newSpeed;
+    cout << "SPEED - " << newSpeed << endl;
+    cout << "-------------------------------------------------";
     cout << "\n\nHere are all the chest items, see what you missed just now :)" << endl;
     cout << "1. Rusty Chest - " << itemPosition[0] << " (" << typePosition[0] << " - " << statsPosition[0] << ")" << endl;
     cout << "2. Rusty Chest - " << itemPosition[1] << " (" << typePosition[1] << " - " << statsPosition[1] << ")" << endl;
@@ -293,7 +293,7 @@ void Stage1::console()
                 }
                 else
                 {
-                    cout << "health recovered to maximum.\n";
+                    cout << "Health recovered to maximum.\n";
                 }
 
                 system("pause");

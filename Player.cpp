@@ -1,6 +1,9 @@
 #include "Player.h"
 #include "Inventory.h"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+// #include <random>
 using namespace std;
 
 Player ::Player()
@@ -48,67 +51,101 @@ void Player ::battle(Creature Enemy) // fighting with what enemy
     {
         // static int round = 1;
         // countround(round);
-        srand(time(0));
-        unsigned int randNumDodgePlayer = rand() % 30 + 1;           // for dodge (player)
-        unsigned int randNumDodgeEnemy = rand() % 20 + 1;            // for dodge (enemy)
-        unsigned int randNumBlockDamage = rand() % getDefense() + 1; // for blocking damage
-        unsigned int randNumCounterAtk = rand() % getAtk() + 1;      // for counter attack
-        showBattleInfo(Enemy);                                       // print player's status and enemy's status
+        srand(static_cast<unsigned int>(time(0)));
+        int randNum = rand();
+        int realNum = randNum % 19 + 1; // for dodge (player)
+        // random_device rd;
+        // mt19937 generator(rd());
+        // uniform_int_distribution<int> distribution(0, 30);
+        // int randNum = distribution(generator);
+        // int realNum = randNum; // for dodge (player)
+        showBattleInfo(Enemy); // print player's status and enemy's status
         cin >> action;
 
         if (action == "attack" || action == "Attack" || action == "ATTACK" || action == "1")
         {
-            hp = Enemy.getHP() - getAtk();
-            Enemy.setHP(hp); // set enemy's HP attack player attack
-
             if (Enemy.StageEnemyAlive()) // if enemy still alive
             {
                 // cout << "LuckNumber " << randomNum << endl; //this code is just used to detect any error in dodging
-                if (randNumDodgePlayer <= getSpeed()) // attack + dodge (player)
+                if (realNum <= getSpeed()) // regular attack + dodge (player)
                 {
                     cout << "You successfully hit the enemy ! " << endl;
-                    cout << "The enemy lost " << getWeaponValue() << " HP." << endl;
+                    cout << "The enemy lost " << getAtk() << " HP." << endl;
                     cout << "Oh no ! The enemy counter attacked you !" << endl;
                     cout << "Well done ! You dodged the attack !" << endl;
                     clearOutput();
-                    continue;
+                    Enemy.setHP(Enemy.getHP() - getAtk()); // set enemy's HP after being attacked by player
                 }
-                else // attack only (player)
+                else
                 {
-                    if (randNumDodge)
+                    realNum = rand() % 10 + 1;
+
+                    if (realNum <= Enemy.getSpeed()) // dodge + counter attack (enemy)
+                    {
+                        cout << "You try to hit the enemy ! " << endl;
+                        cout << "But the enemy dodged your attack !" << endl;
+                        cout << "The enemy counter attacked you !" << endl;
+
+                        if (getArmorValue() > 0) // if player has armor
+                            realNum = rand() % getArmorValue() + 1;
+                        else // if player has no armor
+                            realNum = 0;
+
+                        cout << "You lost " << (Enemy.getAtk() - realNum) << " HP." << endl;
+                        clearOutput();
+                        setHP((getHP() - (Enemy.getAtk() - realNum))); // set player's HP after being attacked by enemy
+                    }
+                    else // attack only (player)
+                    {
                         cout << "You successfully hit the enemy ! " << endl;
-                    cout << "The enemy lost " << getWeaponValue() << " HP." << endl;
-                    cout << "Oh no ! The enemy counter attacked you !" << endl;
-                    cout << "You lost " << Enemy.getAtk() << " HP." << endl;
-                    clearOutput();
-                    setHP(getHP() - Enemy.getAtk());
+                        cout << "The enemy lost " << getAtk() << " HP." << endl;
+
+                        if (Enemy.getHP() > 0) // if enemy still alive
+                        {
+                            cout << "Oh no ! The enemy counter attacked you !" << endl;
+
+                            if (getArmorValue() > 0) // if player has armor
+                                realNum = rand() % getArmorValue() + 1;
+                            else // if player has no armor
+                                realNum = 0;
+
+                            cout << "You lost " << (Enemy.getAtk() - realNum) << " HP." << endl;
+                            clearOutput();
+                            setHP(getHP() - (Enemy.getAtk() - realNum)); // set player's HP after being attacked by enemy
+                            Enemy.setHP(Enemy.getHP() - getAtk());       // set enemy's HP after being attacked by player
+                        }
+                        else // if enemy die
+                            break;
+                    }
                 }
             }
         }
         else if (action == "defense" || action == "Defense" || action == "DEFENSE" || action == "2")
         {
             // cout << "LuckNumber " << randomNum << endl; //this code is just used to detect any error in dodging
-            if (Enemy.getAtk() > getDefense())
+            if (Enemy.getAtk() > getArmorValue())
             {
-                if (randomNum <= getSpeed()) // dodge
+                if (realNum <= getSpeed()) // dodge only (player)
                 {
                     cout << "Nice ! Successfully dodged the enemy's attack !" << endl;
                     clearOutput();
-                    continue;
                 }
-                else // fail to dodge and get hurt
+                else // fail to dodge and get hurt (player)
                 {
-                    cout << "You lost " << (Enemy.getAtk() - getDefense()) << " HP ";
-                    cout << "because you have " << getDefense() << " points of armor ! " << endl;
+                    cout << "You lost " << (Enemy.getAtk() - getArmorValue()) << " HP.";
+                    cout << "Because you have " << getArmorValue() << " points of armor !" << endl;
                     clearOutput();
-                    hp = getHP() - (Enemy.getAtk() - getDefense());
-                    setHP(hp);
+                    setHP(getHP() - (Enemy.getAtk() - getArmorValue())); // set player's HP after being attacked by enemy
                 }
             }
-            else
+            else // block damage and counter attack (player)
             {
+                randNum = rand() % getAtk() + 1;
                 cout << "Enemy's attack blocked !" << endl;
+                cout << "And you counter attacked the enemy !" << endl;
+                cout << "The enemy lost " << realNum << " HP." << endl;
                 clearOutput();
+                Enemy.setHP(Enemy.getHP() - realNum); // set enemy's HP after being attacked by player
             }
         }
         else if (action == "potion" || action == "Potion" || action == "POTION" || action == "3")
@@ -124,6 +161,7 @@ void Player ::battle(Creature Enemy) // fighting with what enemy
                 }
                 else if ((getMaxHealth() - getHP()) < 5)
                 {
+                    cout << "Potion is used successfully. Health is now fully recovered !" << endl;
                     clearOutput();
                     setHP(getMaxHealth());
                 }
@@ -137,7 +175,6 @@ void Player ::battle(Creature Enemy) // fighting with what enemy
             {
                 cout << "Oh boy, there is no potion left in your inventory." << endl;
                 clearOutput();
-                continue;
             }
         }
         else
@@ -151,11 +188,12 @@ void Player ::battle(Creature Enemy) // fighting with what enemy
 // Pls modify this part code for better UI
 void Player ::showBattleInfo(Creature Enemy)
 {
-    cout << setw(66) << "Enemy's HP: " << Enemy.getHP() << endl;
+    cout << setw(70) << "Enemy's HP: " << Enemy.getHP() << endl;
     cout << setw(70) << "Enemy's Attack: " << Enemy.getAtk() << endl;
-    cout << "\n\n\n"
+    cout << setw(70) << "Enemy's Speed: " << Enemy.getSpeed() << endl;
+    cout << "\n"
          << setw(72) << "__________________________" << endl;
-    cout << setw(7) << right << getName() << "  (Level: " << getLvl() << ")" << setw(26) << right << "|" << setw(26) << right << "|" << endl;
+    cout << setw(4) << right << getName() << "  (Level: " << getLvl() << ")" << setw(27) << right << "|" << setw(26) << right << "|" << endl;
     cout << setw(9) << right << "HP: " << setw(6) << right << getHP() << setw(57) << right << " |Now, Choose your action: |" << endl;
     cout << setw(9) << right << "Attack: " << setw(6) << right << getAtk() << setw(41) << right << " |1. Attack " << setw(16) << " |" << endl;
     cout << setw(9) << right << "Defense: " << setw(6) << right << getDefense() << setw(42) << right << "|2. Defense " << setw(16) << " | " << endl;
@@ -282,4 +320,37 @@ void Player::showStats()
     cout << "Attack: " << getAtk() << endl;
     cout << "Defense: " << getDefense() << endl;
     cout << "Speed: " << getSpeed() << endl;
+}
+
+void Player::buffWeapon(string t, int value)
+{
+    inventory->updateInventory(t, inventory->getWeapon(), inventory->getWeaponValue() + value);
+}
+void Player::buffArmor(string t, int value)
+{
+    inventory->updateInventory(t, inventory->getArmor(), inventory->getArmorValue() + value);
+}
+void Player::buffShoe(string t, int value)
+{
+    inventory->updateInventory(t, inventory->getShoe(), inventory->getShoeValue() + value);
+}
+
+void Player::nerfEquipment(string t)
+{
+    if (t == "weapon")
+    {
+        inventory->updateInventory(t, inventory->getWeapon(), inventory->getWeaponValue() - 3);
+    }
+    if (t == "armor")
+    {
+        inventory->updateInventory(t, inventory->getArmor(), inventory->getArmorValue() - 3);
+    }
+    if (t == "shoe")
+    {
+        inventory->updateInventory(t, inventory->getShoe(), inventory->getShoeValue() - 3);
+    }
+
+    if (t == "")
+    {
+    }
 }
