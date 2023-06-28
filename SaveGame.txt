@@ -1,0 +1,13 @@
+name player
+stage 2
+level 1
+hp 28
+MaxHP 35
+attack 4
+defense 0
+speed 0
+potion 0
+gold 5
+weapon Rusty_Knife
+armor None
+shoe None

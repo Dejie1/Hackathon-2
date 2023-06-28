@@ -377,3 +377,8 @@ void Player::nerfEquipment(string t)
         setPotions(getPotions() - 1);
     }
 }
+
+void Player ::setMaxHP(int m)
+{
+    maxHP = m;
+}

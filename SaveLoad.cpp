@@ -91,6 +91,7 @@ void SaveLoad ::savefile()
         outfile << "\nstage " << stackTop->stage;
         outfile << "\nlevel " << stackTop->player.getLvl();
         outfile << "\nhp " << stackTop->player.getHP();
+        outfile << "\nMaxHP " << stackTop->player.getMaxHealth();
         outfile << "\nattack " << stackTop->player.getWeaponValue();
         outfile << "\ndefense " << stackTop->player.getArmorValue();
         outfile << "\nspeed " << stackTop->player.getShoeValue();
@@ -136,6 +137,11 @@ int SaveLoad ::loadfile(Player *ply)
             {
                 infile >> equip;
                 ply->setName(equip);
+            }
+            if (object == "MaxHP")
+            {
+                infile >> value;
+                ply->setMaxHP(value);
             }
 
             if (object == "stage")

@@ -52,6 +52,8 @@ public:
     void buffArmor(string, int);
     void buffShoe(string, int);
     void nerfEquipment(string);
+    void setMaxHP(int);
+    int getMaxHP();
 };
 
 #endif
