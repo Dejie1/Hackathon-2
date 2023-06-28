@@ -44,15 +44,16 @@ void SaveLoad ::show()
     if (infile)
     {
         infile >> obj >> obj;
-        cout << "The latest saved progress." << endl;
+        cout << "\n\nThe latest saved progress." << endl;
         cout << "Name:" << obj << endl;
         infile >> obj >> obj;
         cout << "Stage: " << obj << endl;
         infile >> obj >> obj;
         cout << "Level : " << obj << endl;
-        cout << " Do you want to load this progress? " << endl;
+        cout << "\n\nDo you want to load this progress? " << endl;
         cout << "Press 'y' / 'yes' to proceed. " << endl;
-        cout << "Or press 'n' / 'No' to back to Main Menu" << endl;
+        cout << "Or press 'n' / 'No' to back to Main Menu\n"
+             << endl;
     }
     else
     {

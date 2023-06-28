@@ -53,6 +53,14 @@ void Menu::ShowMenu()
         SavePtr->show();
         cout << "> ";
         cin >> choose;
+
+        while (choose != "y" && choose != "yes" && choose != "n" && choose != "no" && choose != "No" && choose != "NO")
+        {
+            cout << "Sorry, I dont recognize " << choose << endl;
+            cout << "\n> ";
+            cin >> choose;
+        }
+
         if (choose == "y" || choose == "yes")
         {
             int stage = SavePtr->loadfile(plyPtr);
@@ -94,10 +102,6 @@ void Menu::ShowMenu()
         else if (choose == "n" || choose == "no" || choose == "No" || choose == "NO")
         {
             ShowMenu();
-        }
-        else
-        {
-            cout << "Sorry, I dont recognize " << choose;
         }
     }
     if (MenuControl == "3")
