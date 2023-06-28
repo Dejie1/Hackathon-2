@@ -35,7 +35,7 @@ and unlock the `chests` in **Spire of Sins**, a captivating RPG that challenges 
 
 While playing the game, the players are able to make their own decision in some scenarios. The choice they made will affect their future.
 
-Here is an example of the scenario:
+Here is an example of the scenarios:
 ```c++
 You wakes up in a mysterious room with no memory of how you get here ...
 "Damn ... Its cold in here" You said as you slowly close your eyes once again ...
@@ -54,7 +54,7 @@ Choose:
   
 The players are able to deal with `actions` while exploring the mysterious area in the game. 
 
-This is the menu that directs the players to deal with actions:
+This is the `action` menu:
 ```c++
 Type 'walk' to move forward ...
 Type 'wait' to rest ...
@@ -66,10 +66,10 @@ Type 'exit' to exit the game...
 
 - Fight with the `monsters`
 
-The players will encounter with `monsters` for every stage. Every time you get into a new stage, the monsters will become stronger than ever.
+The players will encounter with `monsters` for each stage. Every time you get into a new stage, the monsters will become stronger than ever.
 
 Here is the `battle` menu:
-```c++
+```python
                                                           Enemy's HP: 10
                                                       Enemy's Attack: 2 
                                                        Enemy's Speed: 0 
@@ -86,8 +86,32 @@ Enter your action:
 > _
 ```
 
-- Open the chests
+- Unlock the `chests`
 
--  Stay your determination to move forwards
+After finishing the battle, the player will able to unlock the `chests`. There are total of 3 `chests` for each stage.
 
-6. Escape from the haunted area
+Here is the `chests` menu:
+
+```c++
+You beated the slime ! And you found 3 chests behind the slime.
+But ... Which one would you like to open ?
+1. Rusty Chest
+2. Rusty Chest
+3. Rusty Chest
+> _
+```
+
+- Stay your determination to continue moving forwards
+
+We know that it is **not really easy** for the players (YOU) to beat the game. So, please stay yout **determination** :)
+
+`Congrats !`:
+```c++
+                                                                    ###
+     ####    ####   #    #   ####   #####     ##   #####   ####     ###
+    #    #  #    #  ##   #  #    #  #    #   #  #    #    #         ###
+    #       #    #  # #  #  #       #    #  #    #   #     ####      # 
+    #       #    #  #  # #  #  ###  #####   ######   #         #       
+    #    #  #    #  #   ##  #    #  #   #   #    #   #    #    #    ###
+     ####    ####   #    #   ####   #    #  #    #   #     ####     ###
+```
