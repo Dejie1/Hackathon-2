@@ -11,7 +11,6 @@ SaveLoad ::~SaveLoad()
 {
     while (stackTop)
     {
-
         pop();
     }
 }
@@ -40,12 +39,19 @@ void SaveLoad ::push(int stage, Player *ply)
 
 void SaveLoad ::show()
 {
-    if (stackTop)
+    fstream infile("SaveGame.txt", ios::in);
+    string obj;
+    if (infile)
     {
+        infile >> obj >> obj;
         cout << "The latest saved progress." << endl;
-        cout << "Stage: " << stackTop->stage << endl;
-        cout << "Name:" << stackTop->player.getName() << endl; // show player stats and inventory.
-        cout << "Weapon: " << stackTop->player.getWeapon() << endl;
+        cout << "Name:" << obj << endl;
+        infile >> obj >> obj;
+        cout << "Stage: " << obj << endl;
+        infile >> obj >> obj;
+        cout << "Level : " << obj << endl;
+        cout << " Do you want to load this progress? " << endl;
+        cout << "Press 'y' or 'yes' to proceed. " << endl;
     }
     else
     {
@@ -79,13 +85,15 @@ void SaveLoad ::savefile()
     outfile.open("SaveGame.txt", ios ::out);
     if (outfile)
     {
-        outfile << "stage " << stackTop->stage;
+        outfile << "name " << stackTop->player.getName();
+        outfile << "\nstage " << stackTop->stage;
         outfile << "\nlevel " << stackTop->player.getLvl();
         outfile << "\nhp " << stackTop->player.getHP();
         outfile << "\nattack " << stackTop->player.getWeaponValue();
         outfile << "\ndefense " << stackTop->player.getArmorValue();
         outfile << "\nspeed " << stackTop->player.getShoeValue();
         outfile << "\npotion " << stackTop->player.getPotions();
+        outfile << "\ngold " << stackTop->player.getGold();
         outfile << "\nweapon ";
         if (stackTop->player.getWeapon() == "")
             outfile << "0";
@@ -119,9 +127,14 @@ int SaveLoad ::loadfile(Player *ply)
     if (infile)
     {
         cout << "Reading file..." << endl;
+        ply->initialiseInventory();
         while (infile >> object)
         {
-            ply->initialiseInventory();
+            if (object == "name")
+            {
+                infile >> equip;
+                ply->setName(equip);
+            }
 
             if (object == "stage")
             {
@@ -157,6 +170,11 @@ int SaveLoad ::loadfile(Player *ply)
             {
                 infile >> value;
                 ply->setPotions(value);
+            }
+            else if (object == "gold")
+            {
+                infile >> value;
+                ply->setGold(value);
             }
             else if (object == "weapon")
             {

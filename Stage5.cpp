@@ -100,6 +100,14 @@ void Stage5::newItemFromChest()
     cout << "3. Diamond Chest" << endl;
     cout << "> ";
     cin >> input;
+
+    while (input != 1 && input != 2 && input != 3)
+    {
+        cout << "Invalid input. Please try again !" << endl;
+        cout << "> ";
+        cin >> input;
+    }
+
     system("cls");
 
     if (typePosition[input - 1] == "ATK")
@@ -130,8 +138,8 @@ void Stage5::newItemFromChest()
     cout << "ATK - " << newAtk << endl;
     cout << "DEF - " << newDef << endl;
     cout << "SPEED - " << newSpeed << endl;
-    cout << "-------------------------------------------------";
-    cout << "\n\nHere are all the chest items, see what you missed just now :)" << endl;
+    cout << "-------------------------------------------------------------";
+    cout << "\nHere are all the chest items, see what you missed just now :)" << endl;
     cout << "1. Diamond Chest - " << itemPosition[0] << " (" << typePosition[0] << " - " << statsPosition[0] << ")" << endl;
     cout << "2. Diamond Chest - " << itemPosition[1] << " (" << typePosition[1] << " - " << statsPosition[1] << ")" << endl;
     cout << "3. Diamond Chest - " << itemPosition[2] << " (" << typePosition[2] << " - " << statsPosition[2] << ")";
@@ -182,6 +190,7 @@ void Stage5::console()
         cout << "Type 'wait' to rest ..." << endl;
         cout << "Type 'view' to view inventory ..." << endl;
         cout << "Type 'stats' to view current stats... " << endl;
+        cout << "Type 'exit' to exit the game... " << endl;
         cout << endl;
         cout << "> ";
         cin >> cmd;
@@ -191,7 +200,7 @@ void Stage5::console()
         // {
         //     player->setHP(player->getMaxHealth());
         // }
-        while (cmd != "walk" && cmd != "wait" && cmd != "view" && cmd != "stats")
+        while (cmd != "walk" && cmd != "wait" && cmd != "view" && cmd != "stats" && cmd != "exit")
         {
             cout << "Invalid action. Please try again !\n";
             cout << "> ";
@@ -243,7 +252,7 @@ void Stage5::console()
                     cout << "You gained 5 MAX health. " << endl;
                     player->levelup();
                     int temp = 1 + (rand() % 5);
-                    cout << "You also gained " << temp << " gold! " << endl;
+                    cout << "You also gained " << temp << " gold ! " << endl;
                     player->setGold(player->getGold() + temp);
                     system("pause");
                     system("cls");
@@ -256,24 +265,24 @@ void Stage5::console()
             }
             else if (RNG == 4)
             {
-                cout << player->getName() << " found a glowing statue.." << endl;
-                cout << "\"Young man.. give me 5 health of yours..\" " << endl;
-                cout << "\" and I shall give u 5 golds.. \"" << endl;
-                cout << "\n Choose... " << endl;
-                cout << "1. Here's the bloods..." << endl;
-                cout << "2. Leave the statue..." << endl;
+                cout << player->getName() << " found a glowing statue ..." << endl;
+                cout << "\"Young man ... give me 5 health of yours ...\" " << endl;
+                cout << "\"and I shall give u 5 golds ... \"" << endl;
+                cout << "\nChoose ..." << endl;
+                cout << "1. Here's the bloods ..." << endl;
+                cout << "2. Leave the statue ..." << endl;
                 string choice;
-                cin >> choice;
                 cout << "> ";
+                cin >> choice;
                 while (choice != "1" && choice != "2")
                 {
-                    cout << "Enter again.." << endl;
+                    cout << "Enter again ..." << endl;
                     cin >> choice;
                     cout << "> ";
                 }
                 if (choice == "1")
                 {
-                    cout << player->getName() << " gained 5 golds and lost 5  HP!" << endl;
+                    cout << player->getName() << " gained 5 golds and lost 5  HP !" << endl;
                     player->setGold(player->getGold() + 5);
                     player->setHP(player->getHP() - 5);
                     system("pause");
@@ -346,6 +355,22 @@ void Stage5::console()
             system("pause");
             system("cls");
         }
+        if (cmd == "exit")
+        {
+            char choice;
+            cout << "Exit the game ? Enter 'y' or 'n' " << endl;
+            cin >> choice;
+            if (tolower(choice) == 'y')
+            {
+                exit(3);
+            }
+            else if (tolower(choice) == 'n')
+            {
+                cout << "The game continues..." << endl;
+                system("pause");
+                system("cls");
+            }
+        }
         cmd = "dummy";
     }
     Menu objMenu;
@@ -382,7 +407,6 @@ void Stage5::endlevel()
     cout << "Congratulations you finished the fifth level of the dungeon! \n";
     cout << "------------------------------------------------------------\n";
     savePtr->push(6, player);
-    savePtr->savefile();
     system("pause");
 
     system("cls");

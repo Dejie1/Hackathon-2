@@ -26,6 +26,7 @@ void Shop::displayMenu()
         cout << "| --------------------------------------------------------------------------|\n";
         cout << "| 4. Speed_Tonic    (adds 3 to speed)    |           5 Golds                |\n";
         cout << "| --------------------------------------------------------------------------|\n";
+        cout << "     Note: The effect lasts until you get a new equipment..." << endl;
         cout << "You have " << player->getGold() << " gold." << endl;
         cout << "Enter the number of your desired item" << endl;
         cout << "Enter '5' to view Purchased Item." << endl;
@@ -77,12 +78,14 @@ void Shop::displayMenu()
         {
             string name;
             cout << "Enter the name of the purchased item to sell. ( Remember the underscore! )" << endl;
+            cout << "\n> ";
             cin >> name;
             sellItem(name);
         }
         else if (choice == "7")
         {
             cout << "Exited." << endl;
+
             exitShop = true;
         }
         else

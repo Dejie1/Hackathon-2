@@ -19,13 +19,13 @@ Menu::~Menu() {}
 void Menu::ShowMenu()
 {
     system("cls");
-    cout << " #####   #######  #     #      ######   #     #  #     #   #####   #######  #######  #     #" << endl;
-    cout << "#     #  #         #   #       #     #  #     #  ##    #  #     #  #        #     #  ##    #" << endl;
-    cout << "#        #          # #        #     #  #     #  # #   #  #        #        #     #  # #   # " << endl;
-    cout << " #####   #####       #         #     #  #     #  #  #  #  #  ####  #####    #     #  #  #  #" << endl;
-    cout << "      #  #          # #        #     #  #     #  #   # #  #     #  #        #     #  #   # #" << endl;
-    cout << "#     #  #         #   #       #     #  #     #  #    ##  #     #  #        #     #  #    ##" << endl;
-    cout << " #####   #######  #     #      ######    #####   #     #   #####   #######  #######  #     # " << endl;
+    cout << " #####  ######  ### ######  #######    ####### #######     #####  ### #     # " << endl;
+    cout << "#     # #     #  #  #     # #          #     # #          #     #  #  ##    # " << endl;
+    cout << "#       #     #  #  #     # #          #     # #          #        #  # #   # " << endl;
+    cout << " #####  ######   #  ######  #####      #     # #####       #####   #  #  #  # " << endl;
+    cout << "      # #        #  #   #   #          #     # #                #  #  #   # # " << endl;
+    cout << "#     # #        #  #    #  #          #     # #          #     #  #  #    ## " << endl;
+    cout << " #####  #       ### #     # #######    ####### #           #####  ### #     # " << endl;
     cout << endl;
     cout << "Choose: " << endl;
     cout << "1. Start the game. " << endl;
@@ -48,50 +48,49 @@ void Menu::ShowMenu()
     }
     if (MenuControl == "2")
     {
+        string choose;
         // Load the game
-
-        int stage = SavePtr->loadfile(plyPtr);
-        if (stage == 1)
+        SavePtr->show();
+        cout << "> ";
+        cin >> choose;
+        if (choose == "y" || choose == "yes")
         {
-            Stage1 stage1(plyPtr, SavePtr);
-            cout << "Heading to stage 1." << endl;
-            stage1.loadLevel();
+            int stage = SavePtr->loadfile(plyPtr);
+            if (stage == 1)
+            {
+                Stage1 stage1(plyPtr, SavePtr);
+                stage1.loadLevel();
+            }
+            else if (stage == 2)
+            {
+                Stage2 stage2(plyPtr, SavePtr);
+                stage2.loadLevel();
+            }
+            else if (stage == 3)
+            {
+                Stage3 stage3(plyPtr, SavePtr);
+                stage3.loadLevel();
+            }
+            else if (stage == 4)
+            {
+                Stage4 stage4(plyPtr, SavePtr);
+                stage4.loadLevel();
+            }
+            else if (stage == 5)
+            {
+                Stage5 stage5(plyPtr, SavePtr);
+                stage5.loadLevel();
+            }
+            else if (stage == 0)
+            {
+                cout << "There is no game saved in file." << endl;
+            }
+            else if (stage == 6)
+            {
+                Stage6 stage6(plyPtr, SavePtr);
+                stage6.loadLevel();
+            }
         }
-        else if (stage == 2)
-        {
-            Stage2 stage2(plyPtr, SavePtr);
-            cout << "Heading to stage 2." << endl;
-            stage2.loadLevel();
-        }
-        else if (stage == 3)
-        {
-            Stage3 stage3(plyPtr, SavePtr);
-            cout << "Heading to stage 3." << endl;
-            stage3.loadLevel();
-        }
-        else if (stage == 4)
-        {
-            Stage4 stage4(plyPtr, SavePtr);
-            cout << "Heading to stage 4." << endl;
-            stage4.loadLevel();
-        }
-        else if (stage == 5)
-        {
-            Stage5 stage5(plyPtr, SavePtr);
-            cout << "Heading to stage 5." << endl;
-
-            stage5.loadLevel();
-        }
-        else if (stage == 0)
-        {
-            cout << "There is no game saved in file." << endl;
-        }
-        else if (stage == 6)
-        {
-            Stage6 stage6(plyPtr, SavePtr);
-            stage6.loadLevel();
-        }
-        return;
     }
     if (MenuControl == "3")
     {

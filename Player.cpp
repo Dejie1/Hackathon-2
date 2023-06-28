@@ -52,8 +52,7 @@ void Player ::battle(Creature Enemy) // fighting with what enemy
         // static int round = 1;
         // countround(round);
         srand(static_cast<unsigned int>(time(0)));
-        int randNum = rand();
-        int realNum = randNum % 19 + 1; // for dodge (player)
+        int realNum = rand() % 29 + 1; // for dodge (player)
         // random_device rd;
         // mt19937 generator(rd());
         // uniform_int_distribution<int> distribution(0, 30);
@@ -71,14 +70,14 @@ void Player ::battle(Creature Enemy) // fighting with what enemy
                 {
                     cout << "You successfully hit the enemy ! " << endl;
                     cout << "The enemy lost " << getAtk() << " HP." << endl;
-                    cout << "Oh no ! The enemy counter attacked you !" << endl;
-                    cout << "Well done ! You dodged the attack !" << endl;
+                    cout << "The enemy try to counter attacked you !" << endl;
+                    cout << "But, you dodged the attack ! Well done !" << endl;
                     clearOutput();
                     Enemy.setHP(Enemy.getHP() - getAtk()); // set enemy's HP after being attacked by player
                 }
                 else
                 {
-                    realNum = rand() % 10 + 1;
+                    realNum = rand() % 25 + 1; // for dodge (enemy)
 
                     if (realNum <= Enemy.getSpeed()) // dodge + counter attack (enemy)
                     {
@@ -87,9 +86,15 @@ void Player ::battle(Creature Enemy) // fighting with what enemy
                         cout << "The enemy counter attacked you !" << endl;
 
                         if (getArmorValue() > 0) // if player has armor
+                        {
                             realNum = rand() % getArmorValue() + 1;
+                            cout << "You lost " << (Enemy.getAtk() - realNum) << " HP only because you wear the armor.";
+                        }
                         else // if player has no armor
+                        {
                             realNum = 0;
+                            cout << "You lost " << (Enemy.getAtk() - realNum) << " HP." << endl;
+                        }
 
                         cout << "You lost " << (Enemy.getAtk() - realNum) << " HP." << endl;
                         clearOutput();
@@ -99,23 +104,31 @@ void Player ::battle(Creature Enemy) // fighting with what enemy
                     {
                         cout << "You successfully hit the enemy ! " << endl;
                         cout << "The enemy lost " << getAtk() << " HP." << endl;
+                        Enemy.setHP(Enemy.getHP() - getAtk()); // set enemy's HP after being attacked by player
 
                         if (Enemy.getHP() > 0) // if enemy still alive
                         {
                             cout << "Oh no ! The enemy counter attacked you !" << endl;
 
                             if (getArmorValue() > 0) // if player has armor
+                            {
                                 realNum = rand() % getArmorValue() + 1;
+                                cout << "You lost " << (Enemy.getAtk() - realNum) << " HP only because you wear the armor.";
+                            }
                             else // if player has no armor
+                            {
                                 realNum = 0;
+                                cout << "You lost " << (Enemy.getAtk() - realNum) << " HP." << endl;
+                            }
 
-                            cout << "You lost " << (Enemy.getAtk() - realNum) << " HP." << endl;
                             clearOutput();
                             setHP(getHP() - (Enemy.getAtk() - realNum)); // set player's HP after being attacked by enemy
-                            Enemy.setHP(Enemy.getHP() - getAtk());       // set enemy's HP after being attacked by player
                         }
                         else // if enemy die
+                        {
+                            clearOutput();
                             break;
+                        }
                     }
                 }
             }
@@ -123,7 +136,7 @@ void Player ::battle(Creature Enemy) // fighting with what enemy
         else if (action == "defense" || action == "Defense" || action == "DEFENSE" || action == "2")
         {
             // cout << "LuckNumber " << randomNum << endl; //this code is just used to detect any error in dodging
-            if (Enemy.getAtk() > getArmorValue())
+            if (Enemy.getAtk() > getArmorValue()) // if enemy's attack is higher than player's armor
             {
                 if (realNum <= getSpeed()) // dodge only (player)
                 {
@@ -132,17 +145,25 @@ void Player ::battle(Creature Enemy) // fighting with what enemy
                 }
                 else // fail to dodge and get hurt (player)
                 {
-                    cout << "You lost " << (Enemy.getAtk() - getArmorValue()) << " HP.";
-                    cout << "Because you have " << getArmorValue() << " points of armor !" << endl;
+                    if (getArmorValue() > 0) // if player has armor
+                    {
+                        cout << "You lost " << (Enemy.getAtk() - getArmorValue()) << " HP only." << endl;
+                        cout << "Because you have " << getArmorValue() << " points of armor !" << endl;
+                    }
+                    else
+                    {
+                        cout << "You lost " << (Enemy.getAtk() - getArmorValue()) << " HP." << endl;
+                        cout << "Because you have no armor !" << endl;
+                    }
                     clearOutput();
                     setHP(getHP() - (Enemy.getAtk() - getArmorValue())); // set player's HP after being attacked by enemy
                 }
             }
             else // block damage and counter attack (player)
             {
-                randNum = rand() % getAtk() + 1;
+                realNum = rand() % getAtk() + 1;
                 cout << "Enemy's attack blocked !" << endl;
-                cout << "And you counter attacked the enemy !" << endl;
+                cout << "And you counter attacked the enemy in a sudden !" << endl;
                 cout << "The enemy lost " << realNum << " HP." << endl;
                 clearOutput();
                 Enemy.setHP(Enemy.getHP() - realNum); // set enemy's HP after being attacked by player
@@ -191,9 +212,10 @@ void Player ::showBattleInfo(Creature Enemy)
     cout << setw(70) << "Enemy's HP: " << Enemy.getHP() << endl;
     cout << setw(70) << "Enemy's Attack: " << Enemy.getAtk() << endl;
     cout << setw(70) << "Enemy's Speed: " << Enemy.getSpeed() << endl;
+    cout << setw(4) << right << getName() << "  (Level: " << getLvl() << ")";
     cout << "\n"
-         << setw(72) << "__________________________" << endl;
-    cout << setw(4) << right << getName() << "  (Level: " << getLvl() << ")" << setw(27) << right << "|" << setw(26) << right << "|" << endl;
+         << setw(71) << "_________________________" << endl;
+    cout << setw(46) << right << "|" << setw(26) << right << "|" << endl;
     cout << setw(9) << right << "HP: " << setw(6) << right << getHP() << setw(57) << right << " |Now, Choose your action: |" << endl;
     cout << setw(9) << right << "Attack: " << setw(6) << right << getAtk() << setw(41) << right << " |1. Attack " << setw(16) << " |" << endl;
     cout << setw(9) << right << "Defense: " << setw(6) << right << getDefense() << setw(42) << right << "|2. Defense " << setw(16) << " | " << endl;
@@ -352,5 +374,6 @@ void Player::nerfEquipment(string t)
 
     if (t == "")
     {
+        setPotions(getPotions() - 1);
     }
 }

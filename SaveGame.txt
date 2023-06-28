@@ -1,10 +1,12 @@
+name player
 stage 2
 level 1
-hp 26
+hp 28
 attack 5
 defense 3
 speed 0
 potion 0
+gold 1
 weapon Wooden_Bat
 armor Leather_Armour
 shoe None

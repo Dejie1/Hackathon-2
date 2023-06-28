@@ -61,6 +61,7 @@ void Stage6::console()
         cout << "Type 'wait' to rest ..." << endl;
         cout << "Type 'view' to view inventory ..." << endl;
         cout << "Type 'stats' to view current stats... " << endl;
+        cout << "Type 'exit'' to exit the game... " << endl;
         cout << endl;
         cout << "> ";
         cin.ignore();
@@ -73,7 +74,7 @@ void Stage6::console()
         //     player->setHP(player->getMaxHealth());
         // }
 
-        while (cmd != "walk" && cmd != "wait" && cmd != "view" && cmd != "stats")
+        while (cmd != "walk" && cmd != "wait" && cmd != "view" && cmd != "stats" && cmd != "exit")
         {
             cout << "Invalid action. Please try again !\n";
             cout << "> ";
@@ -183,6 +184,22 @@ void Stage6::console()
             system("pause");
             system("cls");
         }
+        if (cmd == "exit")
+        {
+            char choice;
+            cout << "Exit the game ? Enter 'y' or 'n' " << endl;
+            cin >> choice;
+            if (tolower(choice) == 'y')
+            {
+                exit(3);
+            }
+            else if (tolower(choice) == 'n')
+            {
+                cout << "The game continues..." << endl;
+                system("pause");
+                system("cls");
+            }
+        }
         cmd = "dummy";
     }
     Menu objMenu;
@@ -208,7 +225,6 @@ void Stage6::endlevel()
     Menu objMenu;
     objMenu.congratMessage();
     savePtr->push(5, player);
-    savePtr->savefile();
     system("pause");
     system("cls");
     exit(3);
