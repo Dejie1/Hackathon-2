@@ -25,7 +25,7 @@ We are from Group 40. This is our first game we ever made by using  `C++` progra
 > GAME DESCRIPTION
 
 You are an exile and wake up in a mysterious room with no memory, you don't know how you get here. Suddenly, you heard voices surroud you but you don't where are they from.
-You awaken to a voice beckoning you to wake up, and you tell yourself you have to ESCAPE from this haunted area. Discover the mysterious area, battle fearsome MONSTERS, 
-and unlock the CHESTS in **Spire of Sins**, a captivating RPG that challenges your morality and tests the limits of your resolve.
+You awaken to a voice beckoning you to wake up, and you tell yourself you have to ESCAPE from this haunted area. Discover the mysterious area, battle fearsome `monsters`, 
+and unlock the `chests` in **Spire of Sins**, a captivating RPG that challenges your morality and tests the limits of your resolve.
 
 > GAMEPLAY
