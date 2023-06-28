@@ -77,6 +77,18 @@ and unlock the `chests` in **Spire of Sins**, a captivating text-based RPG that 
   - Gold
   - Potion
 
+> HOW WE IMPLEMENTED OOP
+
+We implement OPP for each `Stage` class. In this case, we use `composition` that allows the objects to be composed of other objects or components in our program.
+
+For example: 
+
+`Stage0` -> `Stage1` -> `Stage2` -> `Stage3` -> `Stage4` -> `Stage5` -> `Stage6`
+
+When the `Stage 0` is finished, it will go to the next stage, `Stage1` and start loading the game.
+
+We also implement OOP for `Player` class and `Creature` class. Our derived class is `Player` class and our base class is `Creature` class. The reason why we want to do this because we want the `Player` class inherits from `Creature` class to get the all the stats of the specific creature. For example the `slime`, so we are able to get the `HP`, `ATK`, `DEF`, `SPEED` of the `slime` to be used in our battle system.
+
 > GAMEPLAY
 
 1. Choose your own `path`.
