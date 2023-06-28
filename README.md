@@ -17,6 +17,9 @@
 
 **Group 40**
 
+> VIDEO PRESENTATION
+https://youtu.be/kicx-xZTQtg
+
 > INTRODUCTION
 
 We are from **Group 40**. This is our first game we ever made by using  `C++` programming language. The game is called **Spire of Sin**. It is an immersive and captivating **text-based** role-playing game (RPG) that delves into a dark and morally world.
