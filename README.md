@@ -49,7 +49,7 @@ and unlock the `chests` in **Spire of Sins**, a captivating RPG that challenges 
 5. Battle System
   - Attack
   - Defend
-  - Potion
+  - Use potion
   - Dodge
   - Blocking Damage
 5. Random Chest System
@@ -68,7 +68,6 @@ and unlock the `chests` in **Spire of Sins**, a captivating RPG that challenges 
   - Shoe
   - Gold
   - Potion
-
 
 > GAMEPLAY
 
