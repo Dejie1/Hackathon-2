@@ -383,7 +383,7 @@ void Stage3::console()
 
 void Stage3::endlevel()
 {
-    cout << "You found torches surrounding a weird pattern ...\n";
+    cout << "You found torches surrounding a weird pattern ....\n";
     Sleep(3000);
     cout << "\"What's this pattern ?\" You said as you slowly walks towards it. \n";
     cout << endl;
