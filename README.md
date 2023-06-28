@@ -19,7 +19,7 @@
 
 > INTRODUCTION
 
-We are from **Group 40**. This is our first game we ever made by using  `C++` programming language. The game is called **Spire of Sin**. It is an immersive and captivating role-playing game (RPG) that delves into a dark and morally world.
+We are from **Group 40**. This is our first game we ever made by using  `C++` programming language. The game is called **Spire of Sin**. It is an immersive and captivating **text-based** role-playing game (RPG) that delves into a dark and morally world.
 
 > HOW TO RUN THE GAME
 
@@ -38,7 +38,7 @@ g++ Creature.cpp Menu.cpp Player.cpp main.cpp Stage0.cpp Stage1.cpp Stage2.cpp S
 
 You are an `exile` and wake up in a mysterious room with no memory, you don't know how you get here. Suddenly, you heard voices surroud you but you don't where are they from.
 You awaken to a voice beckoning you to wake up, and you tell yourself you have to **ESCAPE** from this haunted area. Discover the mysterious area, `battle` fearsome `monsters`, 
-and unlock the `chests` in **Spire of Sins**, a captivating RPG that challenges your morality and tests the limits of your resolve.
+and unlock the `chests` in **Spire of Sins**, a captivating text-based RPG that challenges your morality and tests the limits of your resolve.
 
 > GAME FEATURES
 1. Interactive Menu
