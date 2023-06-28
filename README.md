@@ -15,11 +15,11 @@
 
 > GROUP NUMBER
 
-`Group 40`
+**Group 40**
 
 > INTRODUCTION
 
-We are from `Group 40`. This is our first game we ever made by using  `C++` programming language. The game is called **Spire of Sin**.
+We are from **Group 40**. This is our first game we ever made by using  `C++` programming language. The game is called **Spire of Sin**.
 
 **Spire of Sin** is an immersive and captivating role-playing game (RPG) that delves into a dark and morally world.
 
@@ -30,7 +30,7 @@ Here are the `.cpp` files that are necessary to run as a command:
 Creature.cpp Menu.cpp Player.cpp main.cpp Stage0.cpp Stage1.cpp Stage2.cpp Stage3.cpp Stage4.cpp Stage5.cpp Stage6.cpp Inventory.cpp SaveLoad.cpp Shop.cpp
 ```
 
-Installed any IDE which support `c++`, copy and paste this `command` into the `command prompt`. We take `Visual Studio Code` + `MSYS2` as example:
+Installed any IDE which support `c++`, copy and paste this command into the command prompt. We take `Visual Studio Code` + `MSYS2` as example:
 ```txt
 // Copy this comamand and paste it into the command prompt.
 g++ Creature.cpp Menu.cpp Player.cpp main.cpp Stage0.cpp Stage1.cpp Stage2.cpp Stage3.cpp Stage4.cpp Stage5.cpp Stage6.cpp Inventory.cpp SaveLoad.cpp Shop.cpp -o main.exe
