@@ -150,7 +150,7 @@ But ... Which one would you like to open ?
 
 5. Stay your determination to continue moving forwards.
 
-We know that it is **not really easy** for the players (YOU) to beat the game. So, please stay your **determination** :)
+We know that it is **not really easy** for the players (you) to beat the game. So, please stay your **determination** :)
 
 6. Escape the haunted area.
 `Congrats !`:
