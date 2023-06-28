@@ -154,7 +154,7 @@ We know that it is **not really easy** for the players (you) to beat the game. S
 
 6. Escape the haunted area.
 
-If you manage to beat the game, you will see this message:
+If you **manage to beat the game**, you will see this message:
 ```c++
                                                                     ###
      ####    ####   #    #   ####   #####     ##   #####   ####     ###
@@ -164,4 +164,4 @@ If you manage to beat the game, you will see this message:
     #    #  #    #  #   ##  #    #  #   #   #    #   #    #    #    ###
      ####    ####   #    #   ####   #    #  #    #   #     ####     ###
 ```
-That's is, good luck my `exile` !
+That's is, **good luck** my `exile` !
