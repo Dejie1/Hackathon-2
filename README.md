@@ -1,5 +1,5 @@
 # CPC113 Hackathon 2
-> **GROUP MEMBER**
+> **MEMBERS**
 
 **1.** ANG DE JIE
 
