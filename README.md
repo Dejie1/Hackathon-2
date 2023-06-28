@@ -153,7 +153,8 @@ But ... Which one would you like to open ?
 We know that it is **not really easy** for the players (you) to beat the game. So, please stay your **determination** :)
 
 6. Escape the haunted area.
-`Congrats !`:
+
+If you manage to beat the game, you will see this message:
 ```c++
                                                                     ###
      ####    ####   #    #   ####   #####     ##   #####   ####     ###
@@ -163,3 +164,4 @@ We know that it is **not really easy** for the players (you) to beat the game. S
     #    #  #    #  #   ##  #    #  #   #   #    #   #    #    #    ###
      ####    ####   #    #   ####   #    #  #    #   #     ####     ###
 ```
+That's is, good luck my `exile` !
